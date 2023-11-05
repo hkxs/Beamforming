@@ -7,7 +7,8 @@ authors = [
 ]
 description = "A package to evaluate beamforming performance"
 readme = "README.md"
-dynamic = ["version"]
+dynamic = ["version", "dependencies"]
 
 [tool.setuptools.dynamic]
 version = {attr = "beam_eval._version.__version__"}
+dependencies = {file = "requires.txt"}
