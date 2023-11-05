@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+name = "beam_eval"
+version = "0.0.1"
+authors = [
+  { name="hkxs"},
+]
+description = "A package to evaluate beamforming performance"
+readme = "README.md"
+dynamic = ["version"]
+
+[tool.setuptools.dynamic]
+version = {attr = "beam_eval._version.__version__"}
