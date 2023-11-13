@@ -19,6 +19,7 @@
 #  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 #  OTHER DEALINGS IN THE SOFTWARE.
 
+import numpy as np
 import pandas as pd
 
 
@@ -151,5 +152,11 @@ class BeamformingEvaluation:
 
         Returns
         -------
+        pd.Series
+            Projection of the signal into the subspace
         """
-        return 0
+        gram_matrix = subspace.dot(subspace.T)
+        inverse_gram_matrix = pd.DataFrame(np.linalg.inv(gram_matrix.values))
+        subspace_in_signal = subspace.dot(signal.T)
+        coefficients = inverse_gram_matrix.dot(subspace_in_signal)
+        return coefficients * subspace
